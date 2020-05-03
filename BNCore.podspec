@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BNCore'
-  s.version          = '0.1.0'
+  s.version          = '0.0.1'
   s.summary          = 'iOS常用核心组件'
   s.swift_version    = '4.0' # 这里不写验证的时候会提示错误
 
@@ -23,7 +23,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/chendengwen/BNCore'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { '陈登文' => 'chendw3@bngrp.com' }
+  s.author           = { '陈登文' => '596765672@qq.com' }
   s.source           = { :git => 'https://github.com/chendengwen/BNCore.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
