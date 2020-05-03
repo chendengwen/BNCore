@@ -11,9 +11,7 @@
 
 ```ruby
 use_frameworks!
-
 source 'https://github.com/CocoaPods/Specs.git'
-source 'http://git.bngrp.com/information-management-center/bn-system-dev/bn-center-ios/bnspecs.git'
 
 target 'YourTarget' do
   pod 'BNCore'
