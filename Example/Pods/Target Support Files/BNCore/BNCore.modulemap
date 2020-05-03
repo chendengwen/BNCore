@@ -1,0 +1,6 @@
+framework module BNCore {
+  umbrella header "BNCore-umbrella.h"
+
+  export *
+  module * { export * }
+}
