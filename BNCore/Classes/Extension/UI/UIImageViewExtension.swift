@@ -48,7 +48,18 @@ public extension UIImageView {
                         let bundle_framework = Bundle.init(for: BNCache.self)
                         let bundle_bundle = Bundle.path(forResource: "BNCore", ofType: "bundle", inDirectory: "\(bundle_framework.bundlePath)")
                         let bundle = Bundle.init(path: bundle_bundle!)
-                        let tmpImage = UIImage.init(named: holderImage!.description, in: bundle, compatibleWith: nil)
+
+                        var tmpImage:UIImage?
+                        
+                        switch holderImage {
+                        case .default_large, .default_small:
+                            tmpImage = UIImage.init(named: holderImage!.description, in: bundle, compatibleWith: nil)
+                        case .custom(let _name):
+                            tmpImage = UIImage.init(named:_name)
+                        case .none:
+                            tmpImage = nil
+                        }
+                        
                         DispatchQueue.main.sync {
                             self.contentMode = .center
                             self.image = tmpImage
