@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D3EAE2324628EFF00F5279C /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3EAE2224628EFF00F5279C /* UIDeviceExtension.swift */; };
 		3D80EE5924596062008723B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D80EE5824596062008723B9 /* AppDelegate.swift */; };
 		3D80EE5D24596062008723B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D80EE5C24596062008723B9 /* ViewController.swift */; };
 		3D80EE6024596062008723B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D80EE5E24596062008723B9 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3D3EAE2224628EFF00F5279C /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		3D80EE5524596062008723B9 /* Example02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example02.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D80EE5824596062008723B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D80EE5C24596062008723B9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				3D80EE9B245960A7008723B9 /* DictionaryExtension.swift */,
 				3D80EE9C245960A7008723B9 /* DateExtension.swift */,
 				3D80EEBB245A8BB1008723B9 /* Serializable.swift */,
+				3D3EAE2224628EFF00F5279C /* UIDeviceExtension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				3D80EE5924596062008723B9 /* AppDelegate.swift in Sources */,
 				3D80EEBC245A8BB1008723B9 /* Serializable.swift in Sources */,
 				3D80EEA4245960A7008723B9 /* BNDispatchQueue.swift in Sources */,
+				3D3EAE2324628EFF00F5279C /* UIDeviceExtension.swift in Sources */,
 				3D80EEA8245960A7008723B9 /* UIBarButtonItemExtension.swift in Sources */,
 				3D80EEAA245960A7008723B9 /* StringExtension.swift in Sources */,
 			);

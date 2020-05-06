@@ -61,7 +61,6 @@ public extension UIImageView {
                         }
                         
                         DispatchQueue.main.sync {
-                            self.contentMode = .center
                             self.image = tmpImage
                         }
                     }
