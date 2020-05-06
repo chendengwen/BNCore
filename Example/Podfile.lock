@@ -1,5 +1,5 @@
 PODS:
-  - BNCore (0.2.0)
+  - BNCore (0.0.1)
   - Nimble (7.3.4)
   - Quick (1.2.0)
 
@@ -18,7 +18,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BNCore: 6262281ae415ac3cb6e90d2104f9664dad5364f4
+  BNCore: 49e2a4b3fc50970bb6677471101b084e1f9c608d
   Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
 
