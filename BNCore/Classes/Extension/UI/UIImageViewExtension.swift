@@ -73,16 +73,19 @@ public extension UIImageView {
             }
         }
         
-        BNRequestManager.shared.request(type: .Download, url: url) { (dict, error) in
-            if error != nil {
-                print(error!)
-            } else {
-                let image = BNImageCache.shared.getImageCache(for: url)
-                DispatchQueue.main.async {
-                    self.image = image
+        if image == nil {
+            BNRequestManager.shared.request(type: .Download, url: url) { (dict, error) in
+                if error != nil {
+                    print(error!)
+                } else {
+                    let image = BNImageCache.shared.getImageCache(for: url)
+                    DispatchQueue.main.async {
+                        self.image = image
+                    }
                 }
             }
         }
+        
     }
     
 }
