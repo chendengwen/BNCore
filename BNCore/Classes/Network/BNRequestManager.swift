@@ -103,7 +103,7 @@ public class BNRequestManager: NSObject {
                 }
                 
                 //输出下载文件原来的存放目录
-                print("location:\(location?.description ?? "nil")")
+//                print("location:\(location?.description ?? "nil")")
                 
                 guard let _ = location else {
                     completion(nil, .UnKnown)
