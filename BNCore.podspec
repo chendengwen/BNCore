@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BNCore'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'iOS常用核心组件'
   s.swift_version    = '4.0' # 这里不写验证的时候会提示错误
 

@@ -66,7 +66,7 @@ extension String {
 
 extension URLRequest {
     
-    init(type: BNRequestType, url: String, headers: [String:String]?, timeout: TimeInterval = defaultTimeOut) {
+    init(type: BNRequestType, url: String, headers: [String:String]?, data: Serializable?, timeout: TimeInterval = defaultTimeOut) {
         let url : NSURL =  NSURL.init(string: url)!
         self.init(url: url as URL)
         
@@ -75,6 +75,21 @@ extension URLRequest {
         self.timeoutInterval = timeout
         if type == .Get || type == .Post {
             self.httpMethod = type.rawValue
+        }
+        
+        if type == .Post {
+            var _data:Data = Data()
+            if let _ :Array<Any> = data as? Array<Any> {
+                let temp = try! JSONSerialization.data(withJSONObject: data!, options: [])
+                _data = temp
+            } else if let _ :[String : Any] = data as? [String : Any] {
+                let temp = try! JSONSerialization.data(withJSONObject: data!, options: [])
+                _data = temp
+            } else if let _ :Data = data as? Data {
+                _data = data as! Data
+            }
+            
+            self.httpBody = _data
         }
         self.allHTTPHeaderFields = headers
     }

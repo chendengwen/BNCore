@@ -42,9 +42,18 @@ public class BNRequestManager: NSObject {
         pthread_mutex_destroy(&mutexLock)
     }
     
-    public func request(type: BNRequestType = .Get, url: String, headers: [String:String] = [:], params: [String:Any] = [:], data: Data? = nil, timeout: TimeInterval = 10, progress: @escaping ((Int64, Int64) -> ()) = { a,b in }, completion: @escaping (Serializable?, BNRequestError?) -> Void) {
-        
-        let request = URLRequest.init(type: type, url: url, headers: headers)
+    public func request(type: BNRequestType = .Get, url: String, headers: [String:String] = [:], params: [String:Any] = [:], data: Serializable? = nil, timeout: TimeInterval = 10, progress: @escaping ((Int64, Int64) -> ()) = { a,b in }, completion: @escaping (Serializable?, BNRequestError?) -> Void) {
+    
+    if type == .Post && data == nil {
+        fatalError("Post方式data参数不能为空")
+    }
+    
+    var _headers = [String:String]()
+    if headers.count <= 0 {
+        _headers["Content-Type"] = "application/json"
+    }
+    
+    let request = URLRequest.init(type: type, url: url, headers: _headers, data: data)
         
         let sessionTask = BNSessionTask.init(request: request)
         let semaphore = DispatchSemaphore(value: 0)
@@ -120,7 +129,7 @@ public class BNRequestManager: NSObject {
             
         case .Upload:
             if data != nil {
-                sessionTask.generateUploadTask(session: customSession, data: data!) { (total, now) in
+                sessionTask.generateUploadTask(session: customSession, data: data! as! Data) { (total, now) in
                     
                 }
             } else {
