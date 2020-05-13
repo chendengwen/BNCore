@@ -53,7 +53,7 @@ public class BNRequestManager: NSObject {
         case .Get, .Post:
             sessionTask.generateRequestTask { [weak self] (data, response, error) in
 
-                print(error ?? response!)
+//                print(error ?? response!)
                 
                 if error != nil || data == nil || response == nil {
                     completion(nil, .custom(message: error?.localizedDescription ?? String.errorMessage(msg: "error = nil", other: "Get/Post")))
@@ -90,7 +90,7 @@ public class BNRequestManager: NSObject {
             sessionTask.generateDownloadTask(session: customSession, progressHandler: { (total, now) in
                 progress(total, now)
             }) { [weak self] ( location, response, error) in
-                print(error ?? response!)
+//                print(error ?? response!)
                 
                 guard error == nil else {
                     completion(nil, .custom(message: error?.localizedDescription ?? String.errorMessage(msg: "error = nil", other: "Download")))
