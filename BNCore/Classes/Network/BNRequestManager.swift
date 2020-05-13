@@ -22,7 +22,7 @@ public class BNRequestManager: NSObject {
     
     override init() {
         pthread_mutex_init(&mutexLock, nil)
-        serialQueue.schedule(repeating: 0.5) // 开启任务队列RunLoop
+        serialQueue.schedule(repeating: 0.2) // 开启任务队列RunLoop
         
         let sessionConfig = URLSessionConfiguration.`default`
         if #available(iOS 11.0, *) {

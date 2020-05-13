@@ -40,39 +40,20 @@ public extension UIImageView {
     }
     
     func setImage(for url:String, placeHolder holderImage:BNPlaceHolderImage?, loadCacheImage cache:Bool) {
-        DispatchQueue.default.async {
-            let image = BNImageCache.shared.getImageCache(for: url)
-            if !cache || image  == nil {
-                if holderImage != nil {
-                    DispatchQueue.global().async {
-                        let bundle_framework = Bundle.init(for: BNCache.self)
-                        let bundle_bundle = Bundle.path(forResource: "BNCore", ofType: "bundle", inDirectory: "\(bundle_framework.bundlePath)")
-                        let bundle = Bundle.init(path: bundle_bundle!)
-
-                        var tmpImage:UIImage?
-                        
-                        switch holderImage {
-                        case .default_large, .default_small:
-                            tmpImage = UIImage.init(named: holderImage!.description, in: bundle, compatibleWith: nil)
-                        case .custom(let _name):
-                            tmpImage = UIImage.init(named:_name)
-                        case .none:
-                            tmpImage = nil
-                        }
-                        
-                        DispatchQueue.main.sync {
-                            self.image = tmpImage
-                        }
+        
+        if !cache {
+            if holderImage != nil {
+                DispatchQueue.global().async {
+                    let bundle_framework = Bundle.init(for: BNCache.self)
+                    let bundle_bundle = Bundle.path(forResource: "BNCore", ofType: "bundle", inDirectory: "\(bundle_framework.bundlePath)")
+                    let bundle = Bundle.init(path: bundle_bundle!)
+                    let tmpImage = UIImage.init(named: holderImage!.description, in: bundle, compatibleWith: nil)
+                    DispatchQueue.main.sync {
+                        self.image = tmpImage
                     }
                 }
-            } else if cache {
-                DispatchQueue.main.sync {
-                    self.image = image
-                }
             }
-        }
-        
-        if image == nil {
+            
             BNRequestManager.shared.request(type: .Download, url: url) { (dict, error) in
                 if error != nil {
                     print(error!)
@@ -84,7 +65,37 @@ public extension UIImageView {
                 }
             }
         }
-        
+            
+        else {
+            
+            let image = BNImageCache.shared.getImageCache(for: url)
+            if  image  == nil {
+                if holderImage != nil {
+                    DispatchQueue.global().async {
+                        let bundle_framework = Bundle.init(for: BNCache.self)
+                        let bundle_bundle = Bundle.path(forResource: "BNCore", ofType: "bundle", inDirectory: "\(bundle_framework.bundlePath)")
+                        let bundle = Bundle.init(path: bundle_bundle!)
+                        let tmpImage = UIImage.init(named: holderImage!.description, in: bundle, compatibleWith: nil)
+                        DispatchQueue.main.sync {
+                            self.image = tmpImage
+                        }
+                    }
+                }
+                
+                BNRequestManager.shared.request(type: .Download, url: url) { (dict, error) in
+                    if error != nil {
+                        print(error!)
+                    } else {
+                        let image = BNImageCache.shared.getImageCache(for: url)
+                        DispatchQueue.main.async {
+                            self.image = image
+                        }
+                    }
+                }
+            } else {
+                self.image = image
+            }
+        }
     }
     
 }
