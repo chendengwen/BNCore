@@ -30,4 +30,19 @@ public extension UIDevice {
         return isPhoneX
     }
     
+    class var width: CGFloat {
+        return UIScreen.main.bounds.width
+    }
+    
+    class var height: CGFloat {
+        return UIScreen.main.bounds.height
+    }
+    
+    class var navHeight: CGFloat {
+        return UIDevice.iPhoneX ? 103.0 : 64.0
+    }
+    
+    class var tabHeight: CGFloat {
+        return UIDevice.iPhoneX ? (49 + 20) : 49
+    }
 }
